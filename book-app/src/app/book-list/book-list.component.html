@@ -1,1 +1,13 @@
-<p>book-list works!</p>
+<div class="row mt-3" style="align-items: center;">
+    <div class="col-md-4 mb-3" *ngFor="let book of bookListData">
+        <div class="card text-center">
+            <div class="card-body">
+                <div class="card-title">{{book.name}}</div>
+                <p class="card-text">{{book.description}}</p>
+            </div>
+            <div class="card-footer text-muted">
+                {{book.publishDate | date: 'shortDate'}}
+            </div>
+        </div>
+    </div>
+</div>
