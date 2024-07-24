@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '../navigation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-list',
@@ -9,7 +10,7 @@ import { NavigationService } from '../navigation.service';
 export class BookListComponent implements OnInit {
 
   bookListData: any = [];
-  constructor(private navigationService: NavigationService){}
+  constructor(private navigationService: NavigationService, private router: Router){}
 
   ngOnInit(): void {
     this.navigationService.getBookList().subscribe({
@@ -17,7 +18,7 @@ export class BookListComponent implements OnInit {
         this.bookListData = res;
       },
       error: err => {
-        console.log(err);
+        this.router.navigate(["/login"])
       }
     });
   }

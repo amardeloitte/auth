@@ -4,11 +4,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { authGuard } from './auth.guard';
 
 const routes: Routes = [
   {path: "", redirectTo: "/dashboard", pathMatch: "full"},
   {path: "dashboard", component: DashboardComponent},
-  {path: "book-list", component: BookListComponent},
+  {path: "book-list", component: BookListComponent, canActivate: [authGuard]},
   {path: "register", component: RegisterComponent},
   {path: "login", component: LoginComponent}
 ];

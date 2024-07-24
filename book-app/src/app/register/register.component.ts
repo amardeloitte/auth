@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,12 +11,13 @@ export class RegisterComponent {
 
   registerUserData = {email: "", password: ""};
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService, private route: Router){}
 
   registerUser() {
     this.authService.registerUser(this.registerUserData).subscribe({
       next: res => {
-        console.log(res)
+        localStorage.setItem("token", res.token);
+        this.route.navigate(["/book-list"]);
       },
       error: err => {
         console.log(err);
