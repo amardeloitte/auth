@@ -18,4 +18,8 @@ export class AuthService {
   loginUser(userData: any) {
     return this.http.post<any>(this.loginUrl, userData);
   }
+
+  isAuthenticated() {
+    return !!localStorage.getItem("token");
+  }
 }

@@ -7,8 +7,9 @@ import { BookListComponent } from './book-list/book-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { TokenInterceptorService } from './token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,13 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
