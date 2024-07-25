@@ -10,6 +10,11 @@ import { RegisterComponent } from './register/register.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ReportsComponent } from './reports/reports.component';
+import { TablesComponent } from './tables/tables.component';
+import { AnalysisComponent } from './analysis/analysis.component';
+import { UserAnalysisComponent } from './user-analysis/user-analysis.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,12 @@ import { TokenInterceptorService } from './token-interceptor.service';
     BookListComponent,
     DashboardComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PageNotFoundComponent,
+    ReportsComponent,
+    TablesComponent,
+    AnalysisComponent,
+    UserAnalysisComponent
   ],
   imports: [
     BrowserModule,
@@ -25,13 +35,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
     FormsModule,
     AppRoutingModule,
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService,
-      multi: true
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
